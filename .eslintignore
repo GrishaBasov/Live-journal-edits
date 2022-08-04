@@ -1,0 +1,4 @@
+test/fixtures
+**/live-journal/public
+node_modules
+/* название файла */
