@@ -155,7 +155,11 @@ const reducer = (
 		return {
 			...state,
 		};
-	} 
+	}  if (action.type === "cleanArticleAction") {
+		return {
+			...state, article: [],
+		};
+	}
 	return state;
   
 };

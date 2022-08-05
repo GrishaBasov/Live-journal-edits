@@ -96,3 +96,7 @@ export const unFavoriteAction = (data) => ({
 	type: "unFavoriteAction",
 	data,
 });
+
+export const cleanArticleAction = () => ({
+	type: "cleanArticleAction"
+});

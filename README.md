@@ -1,1 +1,1 @@
-https://live-journal-2.vercel.app 
+https://live-journal-2-grishabasov.vercel.app 

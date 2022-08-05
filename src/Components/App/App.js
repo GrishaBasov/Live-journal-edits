@@ -64,8 +64,11 @@ function App({ state, getArticle, logIn }) {
 					if (slug !== state.article.slug) {
 						getArticle(slug);
 					}
-					if (state.article.length !== 0) {
+					if (state.article.length !== 0 && state.loggedIn) {
 						return <EditArticle data={state.article} />;
+					}
+					if (!state.loggedIn) {
+						return <Redirect to={"/articles/"} />;
 					}
 				}}
 			/>

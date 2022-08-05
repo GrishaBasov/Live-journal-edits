@@ -19,7 +19,8 @@ import {
 	deleteArticleAction,
 	favoriteAction,
 	unFavoriteAction,
-} from "../../actions";
+	cleanArticleAction,
+} from "../../Redux/actions";
 
 export const getArticles = (offset) =>
 	async function (dispatch) {
@@ -213,6 +214,11 @@ export const editArticle = (data, slug) =>
 export const deleteModuleToggle = () =>
 	function (dispatch) {
 		return dispatch(deleteModuleToggleAction());
+	};
+
+export const cleanArticle = () =>
+	function (dispatch) {
+		return dispatch(cleanArticleAction());
 	};
 
 export const deleteArticle = (token, slug) =>
