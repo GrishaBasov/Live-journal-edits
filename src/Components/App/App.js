@@ -12,9 +12,9 @@ import CreateNewArticle from "../CreateNewArticle";
 import FullArticle from "../FullArticle";
 import EditArticle from "../EditArticle";
 
-import { getArticle, logIn } from "../Services/Services";
+import { getArticle, logIn } from "../../Services/Services";
 
-function App({ state, getArticle, logIn }) {
+function App({ state, logIn }) {
 	useEffect(() => {
 		if (localStorage.getItem("email")) {
 			const user = {
@@ -27,13 +27,52 @@ function App({ state, getArticle, logIn }) {
 		}
 	}, []);
 
-	let moduleDisable = style["display-none"];
-	let mainWrapper = style["main-wrapper"];
+	let moduleDisable = style.displayNone;
+	let mainWrapper = style.mainWrapper;
 
 	if (state.deleteModule) {
-		moduleDisable = style["module-disable"];
-		mainWrapper = `${style["main-wrapper"]} ${style["overflow-hidden"]}`;
+		moduleDisable = style.moduleDisable;
+		mainWrapper = `${style.mainWrapper} ${style.overflowHidden}`;
 	}
+
+	function PrivateRoute({ component: Component, ...rest }) {
+		return (
+			<Route
+				{...rest}
+				render={props =>
+					!state.loggedIn ? (
+						<Component {...props} />
+					) : (
+						<Redirect
+							to={{
+								pathname: "/articles/",
+							}}
+						/>
+					)
+				}
+			/>
+		);
+	}
+
+	function PrivateRouteLoggedIn({ component: Component, ...rest }) {
+		return (
+			<Route
+				{...rest}
+				render={props =>
+					state.loggedIn ? (
+						<Component {...props} />
+					) : (
+						<Redirect
+							to={{
+								pathname: "/articles/",
+							}}
+						/>
+					)
+				}
+			/>
+		);
+	}
+
 
 	return (
 		<div className={mainWrapper}>
@@ -47,46 +86,17 @@ function App({ state, getArticle, logIn }) {
 				exact
 				render={({ match }) => {
 					const { slug } = match.params;
-					if (slug !== state.article.slug) {
-						getArticle(slug);
-					}
-					if (state.article.length !== 0) {
-						return (
-							<FullArticle data={state.article} loggedIn={state.loggedIn} />
-						);
-					}
+					return (
+						<FullArticle slug={slug} />
+					);
 				}}
 			/>
-			<Route
-				path='/articles/:slug/edit'
-				render={({ match }) => {
-					const { slug } = match.params;
-					if (slug !== state.article.slug) {
-						getArticle(slug);
-					}
-					if (state.article.length !== 0 && state.loggedIn) {
-						return <EditArticle data={state.article} />;
-					}
-					if (!state.loggedIn) {
-						return <Redirect to={"/articles/"} />;
-					}
-				}}
-			/>
-			<Route path='/sign-up/' render={() =>{
-				if (state.loggedIn) {
-					return <Redirect to={"/articles/"} />;
-				} else {
-					return <SignUp />;
-				}
-			}}/>
-			<Route path='/sign-in/' render={() =>{
-				if (state.loggedIn) {
-					return <Redirect to={"/articles/"} />;
-				} else {
-					return <SignIn />;
-				}
-			}}/>
-			<Route path='/profile/' render={() => <EditProfile />} />
+			<PrivateRoute path={"/sign-up/"} exact component={SignUp} />
+			<PrivateRoute path={"/sign-in/"} exact component={SignIn}/>
+			<PrivateRouteLoggedIn path={"/profile/"} exact component={EditProfile}/>
+
+			<Route path={"/articles/:slug/edit"} render = {() => <EditArticle />}/>
+
 			<Route path='/new-article/' render={() =>{
 				if (state.loggedIn) {
 					return <CreateNewArticle />;

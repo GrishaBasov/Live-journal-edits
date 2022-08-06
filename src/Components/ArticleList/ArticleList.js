@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { getArticles, changeCurrentPage } from "../Services/Services";
+import { getArticles, changeCurrentPage } from "../../Services/Services";
 
 import "antd/dist/antd.min.css";
 
 import Article from "../Article";
 import Spinner from "../Spinner";
 
-import s from "./ArticleList.module.scss";
+import style from "./ArticleList.module.scss";
 import { Pagination } from "antd";
 
 function ArticleList({ getArticles, changeCurrentPage, state }) {
@@ -38,8 +38,8 @@ function ArticleList({ getArticles, changeCurrentPage, state }) {
 	if (state.loading === true) {
 		return (
 			<div>
-				<div className={s["article-list"]}>{elements(state)}</div>
-				<div className={s.pagination}>
+				<div className={style.articleList}>{elements(state)}</div>
+				<div className={style.pagination}>
 					<ServerPagination />
 					<Spinner />
 				</div>
@@ -49,8 +49,8 @@ function ArticleList({ getArticles, changeCurrentPage, state }) {
 
 	return (
 		<div>
-			<div className={s["article-list"]}>{elements(state)}</div>
-			<div className={s.pagination}>
+			<div className={style.articleList}>{elements(state)}</div>
+			<div className={style.pagination}>
 				<ServerPagination />
 			</div>
 		</div>

@@ -1,24 +1,30 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { connect } from "react-redux";
-import s from "../CreateNewArticle/CreateNewArticle.module.scss";
+import classnames from "classnames";
+
+import style from "../CreateNewArticle/CreateNewArticle.module.scss";
+
 import {
 	changeArticleTagInput,
 	changeTagInput,
 	addTagEdit,
 	delTagEdit,
 	editArticle,
-} from "../Services/Services";
+	addTag
+} from "../../Services/Services";
+
 
 function EditArticle({
 	changeArticleTagInput,
-	data,
 	state,
 	changeTagInput,
 	addTagEdit,
 	delTagEdit,
 	editArticle,
 }) {
+	const data = state.article;
+
 	const {
 		register,
 		handleSubmit,
@@ -38,22 +44,22 @@ function EditArticle({
 		editArticle(article, state.article.slug);
 	};
 
-	const elements = (data) =>
+	const oldTags = (data) =>
 		data.tagList.map((item, index) => {
 			if (item.length === 0) {
 				return null;
 			}
 			return (
-				<div key={index} className={s["tag-wrapper"]}>
+				<div key={index} className={style.tagWrapper}>
 					<input
-						className={s["input-tag"]}
+						className={style.inputTag}
 						value={item}
 						onChange={(e) => changeArticleTagInput(e.target.value, index)}
 					/>
 					<button
 						onClick={() => delTagEdit(index)}
 						type='button'
-						className={s["delete-btn"]}
+						className={style.deleteBtn}
 					>
             Delete
 					</button>
@@ -61,28 +67,20 @@ function EditArticle({
 			);
 		});
 
-	let inputTitle = s["input-title"];
-	if (errors.title) {
-		inputTitle += ` ${s["input-wrong"]}`;
-	}
-	let inputShortDescription = s["input-short-description"];
-	if (errors.description) {
-		inputShortDescription += ` ${s["input-wrong"]}`;
-	}
-	let inputBody = s["input-text"];
-	if (errors.body) {
-		inputBody += ` ${s["input-wrong"]}`;
-	}
+	let inputTitle = classnames(style.inputTitle, {[style.inputWrong] : errors.title});
+	let inputShortDescription = classnames( style.inputShortDescription,{[style.inputWrong] : errors.description});
+	let inputBody = classnames( style.inputText,{[style.inputWrong] : errors.body});
+
 
 	return (
 		<form
-			className={s["create-new-article-wrapper"]}
+			className={style.createNewArticleWrapper}
 			onSubmit={handleSubmit(onSubmit)}
 		>
-			<header className={s["cna-header"]}>Edit Article</header>
-			<div className={s["input-wrapper"]}>
+			<header className={style.cnaHeader}>Edit Article</header>
+			<div className={style.inputWrapper}>
 				<div>
-					<div className={s["input-description"]}>Title</div>
+					<div className={style.inputDescription}>Title</div>
 					<input
 						className={inputTitle}
 						placeholder='Title'
@@ -95,7 +93,7 @@ function EditArticle({
 					<p>{errors.title?.message}</p>
 				</div>
 				<div>
-					<div className={s["input-description"]}>Short-description</div>
+					<div className={style.inputDescription}>Short-description</div>
 					<input
 						className={inputShortDescription}
 						placeholder='Short-description'
@@ -108,7 +106,7 @@ function EditArticle({
 					<p>{errors.description?.message}</p>
 				</div>
 				<div>
-					<div className={s["input-description"]}>Text</div>
+					<div className={style.inputDescription}>Text</div>
 					<textarea
 						className={inputBody}
 						placeholder='Text'
@@ -119,11 +117,11 @@ function EditArticle({
 					/>
 					<p>{errors.body?.message}</p>
 				</div>
-				<div className={s["tags-wrapper"]}>
-					<div className={s["input-description"]}>Tags</div>
-					<div className={s["tag-wrapper"]}>
+				<div className={style.tagsWrapper}>
+					<div className={style.inputDescription}>Tags</div>
+					<div className={style.tagWrapper}>
 						<input
-							className={s["input-tag"]}
+							className={style.inputTag}
 							placeholder='Tag'
 							type='text'
 							value={state.tagInput}
@@ -134,14 +132,14 @@ function EditArticle({
 								addTagEdit(state.tagInput);
 							}}
 							type='button'
-							className={s["add-btn"]}
+							className={style.addBtn}
 						>
-              Add tag
+							Add tag
 						</button>
 					</div>
 				</div>
-				{elements(data)}
-				<button className={s["send-button"]}>Send</button>
+				{oldTags(data)}
+				<button className={style.sendButton}>Send</button>
 			</div>
 		</form>
 	);
@@ -153,6 +151,7 @@ const mapStateProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
 	changeTagInput: (tag) => dispatch(changeTagInput(tag)),
+	addTag: (tag) => dispatch(addTag(tag)),
 	addTagEdit: (tag) => dispatch(addTagEdit(tag)),
 	changeArticleTagInput: (data, index) =>
 		dispatch(changeArticleTagInput(data, index)),
@@ -161,3 +160,5 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateProps, mapDispatchToProps)(EditArticle);
+
+

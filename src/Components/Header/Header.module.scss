@@ -12,16 +12,16 @@ $background: #FFFFFF;
   }
 
 
-.left-side {
+.leftSide {
   padding-left: 22px;
 }
 
-.right-side {
+.rightSide {
   display: flex;
   align-items: center;
 }
 
-.sign-in, .main-page, .sign-up, .create-article {
+.signIn, .mainPage, .signUp, .createArticle {
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -45,7 +45,7 @@ button {
   cursor: pointer;
 }
 
-.main-page {
+.mainPage {
   //position: absolute;
   width: 147px;
   height: 56px;
@@ -55,7 +55,7 @@ button {
   margin: 0;
 }
 
-.sign-in {
+.signIn {
   //position: absolute;
   width: 84px;
   height: 35px;
@@ -64,7 +64,7 @@ button {
   border: none;
 }
 
-.sign-up {
+.signUp {
   //position: absolute;
   margin-right: 30px;
   width: 109px;
@@ -79,7 +79,7 @@ button {
 
 
 
-.log-out {
+.logOut {
   width: 109px;
   height: 51px;
   margin-right: 22px;
@@ -89,7 +89,7 @@ button {
   color: rgba(0, 0, 0, 0.75);
 }
 
-.create-article {
+.createArticle {
   box-sizing: border-box;
   width: 112.23px;
   height: 31.1px;
@@ -103,7 +103,7 @@ button {
   margin-right: 10px;
 }
 
-.account-info {
+.accountInfo {
   position: relative;
   width: auto;
   height: 28px;

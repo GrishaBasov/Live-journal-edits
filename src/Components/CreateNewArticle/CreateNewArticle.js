@@ -1,13 +1,17 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { connect } from "react-redux";
-import s from "./CreateNewArticle.module.scss";
+import classnames from "classnames";
+
 import {
 	addTag,
 	changeTagInput,
 	createArticle,
 	delTag,
-} from "../Services/Services";
+} from "../../Services/Services";
+
+import style from "./CreateNewArticle.module.scss";
+
 
 function CreateNewArticle({
 	state,
@@ -23,7 +27,6 @@ function CreateNewArticle({
 	} = useForm();
 
 	const onSubmit = (article) => {
-		console.log(state.tagList);
 		article = {
 			article: {
 				title: article.title,
@@ -38,40 +41,31 @@ function CreateNewArticle({
 
 	const elements = (state) =>
 		state.tagList.map((item, index) => (
-			<div key={index} className={s["tag-wrapper"]}>
-				<input className={s["input-tag"]} value={item} readOnly />
+			<div key={index} className={style.tagWrapper}>
+				<input className={style.inputTag} value={item} readOnly />
 				<button
 					onClick={() => delTag(index)}
 					type='button'
-					className={s["delete-btn"]}
+					className={style.deleteBtn}
 				>
           Delete
 				</button>
 			</div>
 		));
 
-	let inputTitle = s["input-title"];
-	if (errors.title) {
-		inputTitle += ` ${s["input-wrong"]}`;
-	}
-	let inputShortDescription = s["input-short-description"];
-	if (errors.description) {
-		inputShortDescription += ` ${s["input-wrong"]}`;
-	}
-	let inputBody = s["input-text"];
-	if (errors.body) {
-		inputBody += ` ${s["input-wrong"]}`;
-	}
+	let inputTitle = classnames(style.inputTitle, {[style.inputWrong] : errors.title});
+	let inputShortDescription = classnames( style.inputShortDescription,{[style.inputWrong] : errors.description});
+	let inputBody = classnames( style.inputText,{[style.inputWrong] : errors.body});
 
 	return (
 		<form
-			className={s["create-new-article-wrapper"]}
+			className={style.createNewArticleWrapper}
 			onSubmit={handleSubmit(onSubmit)}
 		>
-			<header className={s["cna-header"]}>Create New Article</header>
-			<div className={s["input-wrapper"]}>
+			<header className={style.cnaHeader}>Create New Article</header>
+			<div className={style.inputWrapper}>
 				<div>
-					<div className={s["input-description"]}>Title</div>
+					<div className={style.inputDescription}>Title</div>
 					<input
 						className={inputTitle}
 						placeholder='Title'
@@ -83,7 +77,7 @@ function CreateNewArticle({
 					<p>{errors.title?.message}</p>
 				</div>
 				<div>
-					<div className={s["input-description"]}>Short-description</div>
+					<div className={style.inputDescription}>Short-description</div>
 					<input
 						className={inputShortDescription}
 						placeholder='Short-description'
@@ -95,7 +89,7 @@ function CreateNewArticle({
 					<p>{errors.description?.message}</p>
 				</div>
 				<div>
-					<div className={s["input-description"]}>Text</div>
+					<div className={style.inputDescription}>Text</div>
 					<textarea
 						className={inputBody}
 						placeholder='Text'
@@ -105,11 +99,11 @@ function CreateNewArticle({
 					/>
 					<p>{errors.body?.message}</p>
 				</div>
-				<div className={s["tags-wrapper"]}>
-					<div className={s["input-description"]}>Tags</div>
-					<div className={s["tag-wrapper"]}>
+				<div className={style.tagsWrapper}>
+					<div className={style.inputDescription}>Tags</div>
+					<div className={style.tagWrapper}>
 						<input
-							className={s["input-tag"]}
+							className={style.inputTag}
 							placeholder='Tag'
 							type='text'
 							value={state.tagInput}
@@ -120,14 +114,14 @@ function CreateNewArticle({
 								addTag(state.tagInput);
 							}}
 							type='button'
-							className={s["add-btn"]}
+							className={style.addBtn}
 						>
               Add tag
 						</button>
 					</div>
 				</div>
 				{elements(state)}
-				<button className={s["send-button"]}>Send</button>
+				<button className={style.sendButton}>Send</button>
 			</div>
 		</form>
 	);

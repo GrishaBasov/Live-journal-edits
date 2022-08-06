@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
 import Markdown from "markdown-to-jsx";
 import { connect } from "react-redux";
 import DeleteModal from "../DeleteModal";
-import s from "./FullArticle.module.scss";
+import style from "./FullArticle.module.scss";
 import {
 	deleteModuleToggle,
 	favorite,
 	unFavorite,
 	getArticle,
-} from "../Services/Services";
+} from "../../Services/Services";
 
 function FullArticle({
 	state,
@@ -19,7 +19,13 @@ function FullArticle({
 	favorite,
 	unFavorite,
 	getArticle,
+	slug
 }) {
+
+	useEffect(() => {
+		getArticle(slug);
+	},[]);
+
 	const data = state.article;
 	const { loggedIn } = state;
 
@@ -30,16 +36,16 @@ function FullArticle({
 
 	const tags = () => {
 		let id = 0;
-		return data.tagList.map((item) => {
-			if (item.length === 0) {
-				return null;
-			}
-			return (
-				<span key={id++} className={s.tag}>
-					{item}
-				</span>
-			);
-		});
+		if (data.tagList) {
+			return data.tagList.map((item) => {
+				if (item.length === 0) {
+					return null;
+				}
+				return (
+					<span key={id++} className={style.tag}>{item}</span>
+				);
+			});
+		}
 	};
 
 	let checkBoxStatus = null;
@@ -47,89 +53,97 @@ function FullArticle({
 		checkBoxStatus = true;
 	}
 
-	let deleteButtonStyle = s["delete-button"];
-	let editButtonStyle = s["edit-button"];
+	let deleteButtonStyle = style.deleteButton;
+	let editButtonStyle = style.editButton;
 
-	if (data.author.username !== state.username) {
-		deleteButtonStyle = s["display-none"];
-		editButtonStyle = s["display-none"];
+	if (state.article.length !== 0) {
+		if (data.author.username !== state.username) {
+			deleteButtonStyle = style.displayNone;
+			editButtonStyle = style.displayNone;
+		}
 	}
 
 	const checked = data.favorited;
 
-	return (
-		<div className={s["article-wrapper"]}>
-			<header className={s["article-header"]}>
-				<div className={s["left-side"]}>
-					<div className={s["left-side__header"]}>
-						<div className={s.title}>
-							<Link to={`/articles/${data.slug}`}>{data.title}</Link>
+	if (state.article.length !== 0) {
+		return (
+			<div className={style.articleWrapper}>
+				<header className={style.articleHeader}>
+					<div className={style.leftSide}>
+						<div className={style.leftSide__header}>
+							<div className={style.title}>
+								<Link to={`/articles/${data.slug}`}>{data.title}</Link>
+							</div>
+							<label className={style.like}>
+								<input
+									className={style.like__input}
+									disabled={checkBoxStatus}
+									type='checkbox'
+									checked={checked}
+									onChange={() => {
+										if (checked === false) {
+											favorite(data.slug).then(() => getArticle(data.slug)
+											);
+										}
+										if (checked === true) {
+											unFavorite(data.slug).then(() => getArticle(data.slug)
+											);
+										}
+									}}
+								/>
+								<span className={style.like__box} />
+								<span className={style.like__number}>{data.favoritesCount}</span>
+							</label>
 						</div>
-						<label className={s.like}>
-							<input
-								className={s.like__input}
-								disabled={checkBoxStatus}
-								type='checkbox'
-								checked={checked}
-								onChange={() => {
-									if (checked === false) {
-										favorite(state.token, data.slug).then(() =>
-											getArticle(data.slug)
-										);
-									}
-									if (checked === true) {
-										unFavorite(state.token, data.slug).then(() =>
-											getArticle(data.slug)
-										);
-									}
-								}}
-							/>
-							<span className={s.like__box} />
-							<span className={s.like__number}>{data.favoritesCount}</span>
-						</label>
-					</div>
-					<div className={s["left-side__tag-container"]}>{tags()}</div>
+						<div className={style.leftSide__tagContainer}>{tags()}</div>
 
-					<div className={s["left-side__short-description"]}>
-						{data.description}
+						<div className={style.leftSide__shortDescription}>
+							{data.description}
+						</div>
 					</div>
-				</div>
-				<div className={s["right-side"]}>
-					<button className={s["article-account-name"]}>
-						{data.author.username}
-					</button>
-					<img
-						className={s["article-account-image"]}
-						src={data.author.image}
-						alt='аватар пользователя'
-					/>
-					<div className={s["article-date"]}>{formatCreatedTime()}</div>
-					<button onClick={deleteModuleToggle} className={deleteButtonStyle}>
-            Delete
-					</button>
-					<div className={s["delete-modal"]}>
-						<DeleteModal />
-					</div>
+					<div>
+						<button className={style.articleAccountName}>
+							{data.author.username}
+						</button>
+						<img
+							className={style.articleAccountImage}
+							src={data.author.image}
+							alt='аватар пользователя'
+						/>
+						<div className={style.articleDate}>{formatCreatedTime()}</div>
+						<button onClick={deleteModuleToggle} className={deleteButtonStyle}>
+							Delete
+						</button>
+						<div className={style.deleteModal}>
+							<DeleteModal />
+						</div>
 
-					<Link to={`/articles/${data.slug}/edit`} className={editButtonStyle}>
-            Edit
-					</Link>
+						<Link to={`/articles/${data.slug}/edit`} className={editButtonStyle}>
+							Edit
+						</Link>
+					</div>
+				</header>
+				<div className={style.articleText}>
+					<Markdown>{data.body}</Markdown>
 				</div>
-			</header>
-			<div className={s["article-text"]}>
-				<Markdown>{data.body}</Markdown>
 			</div>
-		</div>
-	);
+		);
+	}
+
+
+
+
+
+
 }
 const mapStateProps = (state) => ({
 	state,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	favorite: (token, slug) => dispatch(favorite(token, slug)),
-	unFavorite: (token, slug) => dispatch(unFavorite(token, slug)),
-	getArticle: (token, offset) => dispatch(getArticle(token, offset)),
+	favorite: (slug) => dispatch(favorite(slug)),
+	unFavorite: (slug) => dispatch(unFavorite(slug)),
+	getArticle: (slug) => dispatch(getArticle(slug)),
 	deleteModuleToggle: () => dispatch(deleteModuleToggle()),
 });
 

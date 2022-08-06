@@ -1,4 +1,4 @@
-.article-wrapper {
+.articleWrapper {
   margin: 26px 0 0 0;
   background: #FFFFFF;
   border-radius: 5px;
@@ -6,21 +6,21 @@
   width: 941px;
   position: relative;
 }
-.article-header {
+.articleHeader {
   display: flex;
   justify-content: space-between;
 }
 
-.left-side {
+.leftSide {
   margin: 0 0 0 19px;
 }
 
-.left-side__header{
+.leftSide__header{
   display: flex;
   height: auto;
 }
 
-.left-side__tag-container{
+.leftSide__tagContainer{
   padding-right:50px;
 }
 
@@ -95,7 +95,7 @@
   color: rgba(0, 0, 0, 0.5);
 }
 
-.left-side__short-description {
+.leftSide__shortDescription {
   width: 682px;
   height:auto;
   margin-top: 10px;
@@ -110,11 +110,11 @@
   color: rgba(0, 0, 0, 0.75);
 }
 
-.article-text-display-none {
+.articleTextDisplayNone {
  display: none;
 }
 
-.article-text {
+.articleText {
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -126,17 +126,14 @@
   padding-bottom: 300px;
 }
 
-.right-side {
-}
-
-.article-account-info {
+.articleAccountInfo {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin: 17px 14px 0 0;
 }
 
-.article-account-name {
+.articleAccountName {
   position: absolute;
   height: 28px;
   right: 72px;
@@ -156,7 +153,7 @@
 
 }
 
-.article-account-image {
+.articleAccountImage {
   position: absolute;
   width: 46px;
   height: 46px;
@@ -165,7 +162,7 @@
   border-radius: 50%;
 }
 
-.article-date {
+.articleDate {
 
   position: absolute;
   width: auto;
@@ -185,7 +182,7 @@
   color: rgba(0, 0, 0, 0.5);
 }
 
-.delete-button {
+.deleteButton {
   box-sizing: border-box;
   position: absolute;
   width: 78px;
@@ -204,7 +201,7 @@
   color: #F5222D;
 }
 
-.edit-button {
+.editButton {
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
   font-style: normal;
@@ -223,6 +220,6 @@
   border-radius: 5px;
 }
 
-.display-none {
+.displayNone {
   display: none;
 }

@@ -1,10 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { connect } from "react-redux";
+import classnames from "classnames";
 
-import s from "./EditProfile.module.scss";
 
-import { editProfile } from "../Services/Services";
+import style from "./EditProfile.module.scss";
+
+import { editProfile } from "../../Services/Services";
 
 function EditProfile({ state, editProfile }) {
 	const {
@@ -13,28 +15,22 @@ function EditProfile({ state, editProfile }) {
 		formState: { errors },
 	} = useForm();
 
-	let usernameInput = s["input-field"];
-	let emailInput = s["input-field"];
-	let passwordInput = s["input-field"];
-	let urlInput = s["input-field"];
+	let usernameInput = classnames(style.inputField, {[style.inputWrong] : errors.username});
+	let emailInput = classnames( style.inputField,{[style.inputWrong] : errors.email});
+	let passwordInput = classnames( style.inputField,{[style.inputWrong] : errors.password});
+	let urlInput = classnames( style.inputField,{[style.inputWrong] : errors.url});
 
-	if (errors.username) {
-		usernameInput = `${s["input-field"]} ${s["input-wrong"]}`;
-	}
-	if (errors.email) {
-		emailInput = `${s["input-field"]} ${s["input-wrong"]}`;
-	}
-	if (errors.password) {
-		passwordInput = `${s["input-field"]} ${s["input-wrong"]}`;
-	}
-	if (errors.url) {
-		urlInput = `${s["input-field"]} ${s["input-wrong"]}`;
-	}
+
+	const passwordFoo = (password) => {
+		if (password.length === 0) {
+			return localStorage.getItem("password");
+		}
+	};
 
 	const onSubmit = (user) => {
 		user = {
 			user: {
-				password: user.password,
+				password: passwordFoo(user.password),
 				email: user.email,
 				token: state.token,
 				username: user.username,
@@ -49,10 +45,10 @@ function EditProfile({ state, editProfile }) {
 	}
 
 	return (
-		<form className={s["edit-profile"]} onSubmit={handleSubmit(onSubmit)}>
-			<header className={s["edit-profile-header"]}>Edit Profile</header>
+		<form className={style.editProfile} onSubmit={handleSubmit(onSubmit)}>
+			<header className={style.editProfileHeader}>Edit Profile</header>
 			<div>
-				<span className={s["input-sign"]}>Username</span>
+				<span className={style.inputSign}>Username</span>
 				<input
 					className={usernameInput}
 					defaultValue={state.username}
@@ -64,7 +60,7 @@ function EditProfile({ state, editProfile }) {
 				<p>{state.errors?.username}</p>
 			</div>
 			<div>
-				<span className={s["input-sign"]}>Email address</span>
+				<span className={style.inputSign}>Email address</span>
 				<input
 					defaultValue={state.email}
 					className={emailInput}
@@ -80,7 +76,7 @@ function EditProfile({ state, editProfile }) {
 				<p>{state.errors?.email}</p>
 			</div>
 			<div>
-				<span className={s["input-sign"]}>New password</span>
+				<span className={style.inputSign}>New password</span>
 				<input
 					placeholder={"New password"}
 					className={passwordInput}
@@ -99,7 +95,7 @@ function EditProfile({ state, editProfile }) {
 				<p>{errors.password?.message}</p>
 			</div>
 			<div>
-				<span className={s["input-sign"]}>Avatar image (url)</span>
+				<span className={style.inputSign}>Avatar image (url)</span>
 				<input
 					placeholder={"Avatar image"}
 					className={urlInput}
@@ -112,8 +108,8 @@ function EditProfile({ state, editProfile }) {
 				/>
 				<p>{errors.url?.message}</p>
 			</div>
-			<div className={s["sign-up__footer"]}>
-				<button className={s["btn-login"]}>Save</button>
+			<div className={style.signUp__footer}>
+				<button className={style.btnLogin}>Save</button>
 			</div>
 		</form>
 	);

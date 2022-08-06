@@ -1,4 +1,4 @@
-.sign-in {
+.signIn {
   box-sizing: border-box;
 
   display: flex;
@@ -26,7 +26,7 @@
   border-radius: 6px;
 }
 
-.sign-in-header {
+.signInHeader {
   width: 311px;
   height: 28px;
 
@@ -46,7 +46,7 @@
   flex-grow: 0;
 }
 
-.input-sign {
+.inputSign {
   width: 320px;
   height: 22px;
   font-family: 'Roboto', sans-serif;
@@ -57,7 +57,7 @@
   color: #262626;
 }
 
-.input-field {
+.inputField {
   box-sizing: border-box;
   width: 320px;
   height: 40px;
@@ -68,12 +68,12 @@
   outline-color: #1890FF;
 }
 
-.input-wrong {
+.inputWrong {
   border-color: #F5222D;
   outline: none;
 }
 
-.password-error {
+.passwordError {
 
   width: 320px;
   height: 22px;
@@ -87,7 +87,7 @@
   color: #F5222D;
 }
 
-.sign-up__footer {
+.signUp__footer {
   width: 319px;
   height: auto;
   display: flex;
@@ -95,7 +95,7 @@
   justify-content: center;
 }
 
-.btn-login {
+.btnLogin {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -115,7 +115,7 @@
   margin-top: 10px;
 }
 
-.footer-caption {
+.footerCaption {
   width: 319px;
   height: 20px;
   font-family: 'Roboto', sans-serif;
@@ -128,7 +128,7 @@
   margin-top: 8px;
 }
 
-.sign-in-footer__a {
+.signInFooter__a {
   color:#1890FF;
   text-decoration: none;
 }

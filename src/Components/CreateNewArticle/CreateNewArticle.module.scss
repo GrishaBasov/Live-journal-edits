@@ -1,4 +1,4 @@
-.create-new-article-wrapper {
+.createNewArticleWrapper {
   box-sizing: border-box;
 
   display: flex;
@@ -24,7 +24,7 @@
   border-radius: 6px;
 }
 
-.cna-header {
+.cnaHeader {
   width: 311px;
   height: 28px;
 
@@ -44,14 +44,14 @@
   flex-grow: 0;
 }
 
-.input-wrapper {
+.inputWrapper {
   display: flex;
   flex-direction: column;
   gap:21px;
-  margin: 20px 0 0 0;
+  margin: 10px 0 0 0;
 }
 
-.input-description {
+.inputDescription {
   width: 320px;
   height: 22px;
 
@@ -67,7 +67,7 @@
   color: #262626;
 }
 
-.input-title, .input-short-description, .input-text, .input-tag {
+.inputTitle, .inputShortDescription, .inputText, .inputTag {
   font-size: 16px;
   line-height: 24px;
   box-sizing: border-box;
@@ -80,7 +80,7 @@
 
 }
 
-.input-text {
+.inputText {
   font-family: 'Roboto',sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -90,23 +90,23 @@
   overflow: scroll;
 }
 
-.tags-wrapper{
+.tagsWrapper{
   display: flex;
   flex-direction: column;
   gap:5px;
 }
 
-.tag-wrapper{
+.tagWrapper{
   display: flex;
   gap:10px;
 }
 
-.input-tag {
+.inputTag {
   width:300px;
   height:40px;
 }
 
-.delete-btn {
+.deleteBtn {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -120,7 +120,7 @@
   width:90px;
 }
 
-.add-btn {
+.addBtn {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -140,7 +140,7 @@
   opacity: 1; /* Firefox */
 }
 
-.send-button{
+.sendButton{
   display: flex;
   justify-content: center;
   padding: 8px 16px;
@@ -165,7 +165,7 @@
   flex-grow: 0;
 }
 
-.input-wrong {
+.inputWrong {
   border-color: #F5222D;
   outline: none;
 }

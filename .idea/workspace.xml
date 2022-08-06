@@ -5,15 +5,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b01a0ffb-d859-4925-890b-e0c4d733b897" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.prettierrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/App/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/App/App.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/App/App.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/App/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/App/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Article/Article.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Article/Article.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Article/Article.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Article/Article.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Article/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Article/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ArticleList/ArticleList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ArticleList/ArticleList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ArticleList/ArticleList.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ArticleList/ArticleList.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ArticleList/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ArticleList/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/CreateNewArticle/CreateNewArticle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/CreateNewArticle/CreateNewArticle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/CreateNewArticle/CreateNewArticle.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/CreateNewArticle/CreateNewArticle.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/CreateNewArticle/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/CreateNewArticle/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/DeleteModal/DeleteModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/DeleteModal/DeleteModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/DeleteModal/DeleteModal.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/DeleteModal/DeleteModal.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/DeleteModal/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/DeleteModal/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/EditArticle/EditArticle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EditArticle/EditArticle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/EditArticle/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EditArticle/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/EditProfile/EditProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EditProfile/EditProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/EditProfile/EditProfile.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EditProfile/EditProfile.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/EditProfile/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EditProfile/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/FullArticle/FullArticle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/FullArticle/FullArticle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/FullArticle/FullArticle.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/FullArticle/FullArticle.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/FullArticle/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/FullArticle/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Header/Header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Header/Header.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Header/Header.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Services/Services.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Services/Services.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Header/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Header/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Services/Services.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Services.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/SignIn/SignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SignIn/SignIn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/SignIn/SignIn.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SignIn/SignIn.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/SignIn/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SignIn/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/SignUp/SignUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SignUp/SignUp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/SignUp/SignUp.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SignUp/SignUp.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/SignUp/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SignUp/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Spinner/Spinner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Spinner/Spinner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Spinner/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Spinner/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/reducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/reducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +72,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -48,6 +88,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/Redux" />
     </key>
   </component>
@@ -60,7 +101,10 @@
       <option name="presentableId" value="Default" />
       <updated>1659558975089</updated>
       <workItem from="1659558978526" duration="1559000" />
-      <workItem from="1659602107354" duration="3259000" />
+      <workItem from="1659602107354" duration="5494000" />
+      <workItem from="1659777980075" duration="16968000" />
+      <workItem from="1659801405973" duration="746000" />
+      <workItem from="1659802473445" duration="1853000" />
     </task>
     <servers />
   </component>

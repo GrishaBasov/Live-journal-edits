@@ -2,8 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import s from "./SignUp.module.scss";
-import { createNewUser } from "../Services/Services";
+import style from "./SignUp.module.scss";
+import { createNewUser } from "../../Services/Services";
+import classnames from "classnames";
 
 function SignUp({ state, createNewUser }) {
 	const {
@@ -24,32 +25,16 @@ function SignUp({ state, createNewUser }) {
 		createNewUser(user);
 	};
 
-	let usernameInput = s["input-field"];
-	let emailInput = s["input-field"];
-	let passwordInput = s["input-field"];
-	let passwordRepeat = s["input-field"];
-	if (errors.username) {
-		usernameInput = `${s["input-field"]} ${s["input-wrong"]}`;
-	}
-	if (errors.email) {
-		emailInput = `${s["input-field"]} ${s["input-wrong"]}`;
-	}
-	if (errors.password) {
-		passwordInput = `${s["input-field"]} ${s["input-wrong"]}`;
-	}
-	if (errors.passwordRepeat) {
-		passwordRepeat = `${s["input-field"]} ${s["input-wrong"]}`;
-	}
-
-	if (state.loggedIn) {
-		return null;
-	}
+	let usernameInput = classnames(style.inputField, {[style.inputWrong] : errors.username});
+	let emailInput = classnames( style.inputField,{[style.inputWrong] : errors.email});
+	let passwordInput = classnames( style.inputField,{[style.inputWrong] : errors.password});
+	let passwordRepeat = classnames( style.inputField,{[style.inputWrong] : errors.passwordRepeat});
 
 	return (
-		<form className={s["sign-up"]} onSubmit={handleSubmit(onSubmit)}>
-			<header className={s["sign-up-header"]}>Create New Account</header>
+		<form className={style.signUp} onSubmit={handleSubmit(onSubmit)}>
+			<header className={style.signUpHeader}>Create New Account</header>
 			<div>
-				<span className={s["input-sign"]}>Username</span>
+				<span className={style.inputSign}>Username</span>
 				<input
 					placeholder={"Username"}
 					className={usernameInput}
@@ -70,7 +55,7 @@ function SignUp({ state, createNewUser }) {
 				<p>{state.errors?.username}</p>
 			</div>
 			<div>
-				<span className={s["input-sign"]}>Email address</span>
+				<span className={style.inputSign}>Email address</span>
 				<input
 					placeholder={"Email address"}
 					className={emailInput}
@@ -86,7 +71,7 @@ function SignUp({ state, createNewUser }) {
 				<p>{state.errors?.email}</p>
 			</div>
 			<div>
-				<span className={s["input-sign"]}>Password</span>
+				<span className={style.inputSign}>Password</span>
 				<input
 					placeholder={"Password"}
 					className={passwordInput}
@@ -106,7 +91,7 @@ function SignUp({ state, createNewUser }) {
 				<p>{errors.password?.message}</p>
 			</div>
 			<div>
-				<span className={s["input-sign"]}>Repeat Password</span>
+				<span className={style.inputSign}>Repeat Password</span>
 				<input
 					placeholder={"Repeat Password"}
 					className={passwordRepeat}
@@ -119,26 +104,26 @@ function SignUp({ state, createNewUser }) {
 				/>
 				<p>{errors.passwordRepeat?.message}</p>
 			</div>
-			<label className={s.check}>
+			<label className={style.check}>
 				<input
 					type='checkbox'
-					className={s.check__input}
+					className={style.check__input}
 					{...register("checkbox", {
 						required:
               "Требуется ваше согласие на обработку персональных данных",
 					})}
 				/>
-				<span className={s.check__box} />
-				<span className={s.check__description}>
+				<span className={style.check__box} />
+				<span className={style.check__description}>
           I agree to the processing of my personal information
 				</span>
 			</label>
 			<p>{errors.checkbox?.message}</p>
-			<div className={s["sign-up__footer"]}>
-				<button className={s["btn-create"]}>Create</button>
-				<span className={s["footer-caption"]}>
+			<div className={style.signUp__footer}>
+				<button className={style.btnCreate}>Create</button>
+				<span className={style.footerCaption}>
           Already have account?{" "}
-					<Link to='/sign-in/' className={s["sign-up-footer__a"]}>
+					<Link to='/sign-in/' className={style.signUpFooter__a}>
             Sign In
 					</Link>
 				</span>

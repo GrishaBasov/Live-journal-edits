@@ -114,6 +114,7 @@ const reducer = (
 			...state, tagList: [], tagInput: ""
 		};
 	} if (action.type === "changeArticleTagInputAction") {
+
 		state.article.tagList[action.index] = action.data;
 		return {
 			...state,
@@ -138,7 +139,7 @@ const reducer = (
 	} if (action.type === "editArticleAction") {
 		window.history.back();
 		return {
-			...state,
+			...state, tagInput: "",
 		};
 	} if (action.type === "deleteModuleToggleAction") {
 		return {
